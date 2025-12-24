@@ -6,11 +6,9 @@
     <title>One Card - The Future of Payments</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --font-body: sans-serif;
-            --font-display: sans-serif;
             --primary-color: #4A90E2;
             --secondary-color: #F5A623;
             --success-color: #28a745;
@@ -31,14 +29,14 @@
         * { box-sizing: border-box; }
 
         body {
-            font-family: var(--font-body);
-            font-weight: 400;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 450;
             font-optical-sizing: auto;
             font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
             background: linear-gradient(135deg,
-                #f5f6f8 0%,
-                #fafbfc 45%,
-                #f1f2f4 100%);
+                #f5f7fa 0%,
+                #f8f9fa 50%,
+                #e8ecf0 100%);
             margin: 0;
             padding: 2em;
             color: #1a1a1a;
@@ -51,42 +49,29 @@
         }
 
         .animated-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3;
-            background: linear-gradient(-45deg, #f2f3f5, #fafbfc, #f6f7f9, #ffffff);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: linear-gradient(-45deg, #f0f4f8, #e3e9f0, #f8f9fa, #ffffff);
             background-size: 400% 400%;
-            background-position: 50% 50%;
             animation: gradientShift 15s ease infinite;
-        }
-
-        .circuit-bg {
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            pointer-events: none;
-            opacity: 0.35;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0,0,260,260'><g fill='none' stroke='rgba(120,120,120,0.18)' stroke-width='2' stroke-linecap='round'><path d='M20,40h80v40h40v40h80'/><path d='M40,220h80v-40h40v-40h60'/><path d='M200,60v40h-40v40h-40'/></g><g fill='rgba(255,255,255,0.6)' stroke='rgba(120,120,120,0.25)' stroke-width='1'><circle cx='20' cy='40' r='3'/><circle cx='100' cy='80' r='3'/><circle cx='140' cy='120' r='3'/><circle cx='220' cy='120' r='3'/><circle cx='40' cy='220' r='3'/><circle cx='120' cy='180' r='3'/><circle cx='160' cy='140' r='3'/><circle cx='200' cy='60' r='3'/></g><rect x='150' y='200' width='30' height='30' rx='4' ry='4' fill='rgba(180,180,180,0.18)' stroke='rgba(150,150,150,0.22)'/></svg>");
-            background-size: 260px 260px;
-            background-position: 0 0;
         }
 
         .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
         .particle {
-            position: absolute; width: 6px; height: 6px;
-            background: rgba(74, 154, 255, 0.55);
+            position: absolute; width: 4px; height: 4px;
+            background: rgba(74, 144, 226, 0.5);
             border-radius: 50%; animation: float 35s infinite linear;
-            box-shadow: 0 0 10px rgba(74, 154, 255, 0.35);
+            box-shadow: 0 0 6px rgba(74, 144, 226, 0.4);
         }
 
         .particle:nth-child(odd) {
-            background: rgba(255, 179, 71, 0.5);
-            box-shadow: 0 0 10px rgba(255, 179, 71, 0.3);
+            background: rgba(245, 166, 35, 0.5);
+            box-shadow: 0 0 6px rgba(245, 166, 35, 0.4);
         }
 
         @keyframes gradientShift {
             0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
         }
-
 
         @keyframes float {
             0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
@@ -94,108 +79,74 @@
             100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
 
-        .header-section {
-            text-align: center;
-            width: 100%;
-            margin: 0 0 1.5em;
-            padding: 0.5em 0 0;
-        }
+        .header-section { text-align: center; margin-bottom: 2em; padding: 1em 0; }
         
         .logo-container {
-            display: block;
-            width: 100%;
+            display: inline-block;
             transition: all 0.3s ease;
         }
 
         .logo-container:hover { transform: translateY(-5px); }
 
-        .logo-card {
-            position: relative;
-            width: 100%;
-            height: 120px;
-            margin: 0 auto 0;
-            overflow: hidden;
-            border-radius: 18px;
-            background: #0a0a0a;
-        }
-
-        .logo-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: min(240px, 55%);
+        .header-image {
+            max-width: 700px; width: 100%;
+            max-height: 120px;
+            width: auto;
             height: auto;
+            display: block;
+            margin: 0 auto;
             object-fit: contain;
         }
 
 
-        .demo-container { display: flex; flex-direction: column; gap: 1em; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 12em); position: relative; z-index: 1; }
-
-        .demo-shell {
-            background: rgba(255, 255, 255, 0.35);
-            border-radius: 28px;
-            padding: 2.5em;
-            backdrop-filter: blur(36px) saturate(170%);
-            -webkit-backdrop-filter: blur(36px) saturate(170%);
-            box-shadow:
-                0 24px 48px rgba(15, 23, 42, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.55);
-        }
+        .demo-container { display: flex; flex-direction: column; gap: 2em; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 12em); }
         
         .panel {
-            background: transparent;
-            padding: 0;
-            border-radius: 0;
-            border: 1px solid transparent;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.75) 0%,
+                rgba(255, 255, 255, 0.65) 100%);
+            padding: 3em;
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
-            box-shadow: none;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
+            box-shadow:
+                0 10px 40px 0 rgba(74, 144, 226, 0.12),
+                0 2px 8px 0 rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 0 rgba(255, 255, 255, 1),
+                inset 0 -1px 0 0 rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .panel + .panel { margin-top: 0; }
-
         .panel:hover {
-            transform: none;
-            box-shadow: none;
+            transform: translateY(-2px);
+            box-shadow:
+                0 15px 50px 0 rgba(74, 144, 226, 0.15),
+                0 4px 12px 0 rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 0 rgba(255, 255, 255, 1),
+                inset 0 -1px 0 0 rgba(255, 255, 255, 0.4);
         }
 
         .panel::before {
-            content: none;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent);
+            animation: panelShimmer 8s infinite;
+            pointer-events: none;
         }
 
-        .demo-shell .panel + .panel {
-            margin-top: 2.5em;
-            padding-top: 2.5em;
-            border-top: 1px solid rgba(255, 255, 255, 0.25);
-        }
-
-        .panel-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1em;
-            margin-bottom: 1.5em;
-            position: relative;
-            z-index: 2;
-        }
-
-        .wallet-header {
-            align-items: baseline;
-        }
-
-        .panel h2,
-        .section-title,
-        .credit-cards-label,
-        .wallet-summary-value,
-        .success-text {
-            font-family: var(--font-display);
-        }
+        @keyframes panelShimmer { 0% { left: -100%; } 50% { left: -100%; } 100% { left: 100%; } }
 
         .panel h2 {
             margin-top: 0;
@@ -204,118 +155,21 @@
             font-size: 1.8em;
             font-weight: 700;
             letter-spacing: -0.02em;
-            line-height: 1.1;
             display: flex;
             align-items: center;
             gap: 0.5em;
-        }
-
-        .panel-header > h2 {
-            margin-bottom: 0;
-        }
-
-        .wallet-stats-menu {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .wallet-stats-toggle {
-            border: 1px solid rgba(74, 144, 226, 0.45);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 249, 255, 0.95));
-            color: #1a1a1a;
-            font-size: 1em;
-            font-weight: 600;
-            padding: 0.65em 1.35em;
-            border-radius: 999px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6em;
-            min-height: 46px;
-            min-width: 122px;
-            justify-content: center;
-            transition: all 0.25s ease;
-            box-shadow: 0 10px 20px rgba(74, 144, 226, 0.16);
-        }
-
-        .wallet-stats-toggle.active {
-            border-color: rgba(74, 144, 226, 0.6);
-            box-shadow: 0 10px 22px rgba(74, 144, 226, 0.18);
-            transform: translateY(-1px);
-        }
-
-        .wallet-stats-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-        }
-
-        .wallet-stats-icon svg {
-            width: 18px;
-            height: 18px;
-            stroke: #2f5da6;
-            stroke-width: 1.8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .wallet-stats-toggle.active .wallet-stats-icon svg {
-            stroke: #1e4c92;
-        }
-
-        .wallet-stats-popover {
-            position: absolute;
-            top: calc(100% + 12px);
-            right: 0;
-            width: 300px;
-            background: rgba(255, 255, 255, 0.18);
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            box-shadow:
-                0 16px 34px rgba(74, 144, 226, 0.12),
-                inset 0 0 0 1px rgba(74, 154, 255, 0.08);
-            padding: 0.75em;
-            opacity: 0;
-            transform: translateY(-8px);
-            pointer-events: none;
-            transition: all 0.25s ease;
-            z-index: 3;
-            backdrop-filter: blur(18px) saturate(160%);
-        }
-
-        .wallet-stats-popover.open {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .wallet-stats-popover .wallet-summary {
-            margin: 0;
-            padding: 1em;
-            display: grid;
-            gap: 0.75em;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.38);
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
-        }
-
-        .wallet-stats-popover .wallet-summary-item {
-            align-items: flex-start;
         }
 
         .card-mockup {
             background: transparent;
             color: white;
             padding: 0;
-            margin-bottom: 0.8em;
+            margin-bottom: 2em;
             margin-left: auto;
             margin-right: auto;
             position: relative;
-            transform: translateY(0);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform: perspective(1000px) rotateX(5deg);
+            transition: all 0.4s ease;
             overflow: hidden;
             height: auto;
             max-width: 550px;
@@ -323,7 +177,7 @@
         }
 
         .card-mockup:hover {
-            transform: translateY(-6px);
+            transform: perspective(1000px) rotateX(0deg) translateY(-8px);
         }
 
         .card-mockup img {
@@ -333,7 +187,6 @@
             border-radius: 16px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             transition: all 0.4s ease;
-            filter: brightness(1.08) contrast(1.08) saturate(1.05);
         }
 
         .card-mockup:hover img {
@@ -356,8 +209,8 @@
         .tx-button {
             padding: 1.8em 1.2em;
             border-radius: 18px;
-            border: none;
-            background: rgba(255, 255, 255, 0.28);
+            border: 2px solid rgba(74, 144, 226, 0.35);
+            background: rgba(255, 255, 255, 0.85);
             cursor: pointer;
             text-align: center;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -366,18 +219,19 @@
             color: #1a1a1a;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(12px) saturate(160%);
+            backdrop-filter: blur(10px);
             box-shadow:
-                inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-                0 10px 22px rgba(74, 144, 226, 0.08);
+                0 4px 16px rgba(74, 144, 226, 0.08),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
         }
 
         .tx-button:hover {
+            border-color: var(--primary-color);
             background: rgba(74, 144, 226, 0.08);
             transform: translateY(-4px) scale(1.02);
             box-shadow:
-                inset 0 0 0 1px rgba(74, 144, 226, 0.25),
-                0 12px 30px rgba(74, 144, 226, 0.16);
+                0 12px 30px rgba(74, 144, 226, 0.2),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
         }
 
         .tx-button.active {
@@ -446,58 +300,32 @@
         .stage.active .stage-label { color: var(--primary-color); font-weight: 600; }
 
         .receipt-container {
-            margin-top: 1em;
-            padding: 1.5em;
-            background: rgba(255, 255, 255, 0.28);
-            border-radius: 18px;
-            border: none;
-            backdrop-filter: blur(16px) saturate(170%);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
+            margin-top: 1em; padding: 1.5em; background: rgba(255, 255, 255, 0.9); border-radius: 15px;
+            border: 2px solid rgba(74, 144, 226, 0.4); opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
         }
         .receipt-container.visible { opacity: 1; transform: translateY(0); }
         .receipt-title { color: #1a1a1a; margin-bottom: 1em; font-weight: 600; text-align: center; font-size: 1.1em; }
         .receipt-item { display: flex; justify-content: space-between; margin-bottom: 0.8em; color: #6c757d; }
-        .receipt-item.total { border-top: 1px solid rgba(74, 144, 226, 0.2); padding-top: 0.8em; font-weight: 600; color: #1a1a1a; font-size: 1.1em; }
+        .receipt-item.total { border-top: 2px solid rgba(74, 144, 226, 0.4); padding-top: 0.8em; font-weight: 600; color: #1a1a1a; font-size: 1.1em; }
 
         .log-section {
             margin-top: 2.5em;
             padding-top: 2.5em;
+            border-top: 1px solid rgba(74, 144, 226, 0.1);
             position: relative;
         }
 
         .log-section::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: -1px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60%;
+            width: 50%;
             height: 1px;
             background: linear-gradient(90deg,
                 transparent,
-                rgba(74, 154, 255, 0.35) 50%,
-                transparent);
-        }
-
-        .section-divider {
-            position: relative;
-            margin: 2.5em 0;
-            height: 1px;
-        }
-
-        .section-divider::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 1px;
-            background: linear-gradient(90deg,
-                transparent,
-                rgba(74, 154, 255, 0.35) 50%,
+                rgba(74, 144, 226, 0.3) 50%,
                 transparent);
         }
 
@@ -509,21 +337,21 @@
         }
         
         #log {
-            background: rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.5);
             color: var(--log-text-color);
             padding: 1.5em;
             border-radius: 20px;
             overflow-y: auto;
-            font-family: var(--font-body);
+            font-family: 'Monaco', 'Menlo', monospace;
             font-size: 0.9em;
             line-height: 1.6;
-            border: none;
+            border: 1px solid rgba(74, 144, 226, 0.15);
             flex: 1;
             position: relative;
-            backdrop-filter: blur(14px) saturate(170%);
+            backdrop-filter: blur(10px);
             box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.5),
-                0 8px 18px rgba(74, 144, 226, 0.06);
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.6),
+                0 4px 16px rgba(74, 144, 226, 0.05);
         }
 
         #log::-webkit-scrollbar {
@@ -580,13 +408,8 @@
         .optimization-section.visible { opacity: 1; transform: translateY(0); }
         
         .fun-fact-card {
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 18px;
-            padding: 1.5em;
-            border: none;
-            margin-top: 1em;
-            backdrop-filter: blur(16px) saturate(160%);
-            box-shadow: 0 10px 22px rgba(74, 144, 226, 0.06);
+            background: rgba(74, 144, 226, 0.15); border-radius: 15px; padding: 1.5em;
+            border: 2px solid rgba(74, 144, 226, 0.4); margin-top: 1em;
         }
 
         .fun-fact-header { display: flex; align-items: center; gap: 0.5em; margin-bottom: 1em; }
@@ -598,12 +421,15 @@
         .wallet-setup-section { margin-bottom: 2em; }
         .my-wallet-section {
             margin-bottom: 2em;
-            background: transparent;
-            padding: 0;
-            border-radius: 0;
-            border: none;
-            backdrop-filter: none;
-            box-shadow: none;
+            background: linear-gradient(135deg,
+                rgba(74, 144, 226, 0.04) 0%,
+                rgba(245, 166, 35, 0.04) 100%);
+            padding: 2.5em;
+            border-radius: 25px;
+            border: 1px solid rgba(74, 144, 226, 0.15);
+            box-shadow:
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+                0 4px 16px rgba(74, 144, 226, 0.05);
         }
 
         .card-selection-grid {
@@ -613,12 +439,12 @@
             margin-bottom: 1em;
             max-height: 450px;
             overflow-y: auto;
-            padding: 0;
-            background: rgba(255, 255, 255, 0.08);
+            padding: 1.5em;
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 20px;
-            border: none;
-            backdrop-filter: blur(14px) saturate(160%);
-            box-shadow: none;
+            border: 1px solid rgba(74, 144, 226, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
         }
 
         .card-selection-grid::-webkit-scrollbar {
@@ -640,32 +466,27 @@
         }
 
         .card-option {
-            background: rgba(255, 255, 255, 0.35);
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(74, 144, 226, 0.4);
+            border-radius: 15px;
             padding: 1.2em;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(12px) saturate(150%);
-            box-shadow:
-                inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-                0 8px 18px rgba(74, 144, 226, 0.08);
         }
 
         .card-option:hover {
-            transform: translateY(-2px);
-            box-shadow:
-                inset 0 0 0 1px rgba(74, 144, 226, 0.25),
-                0 14px 26px rgba(74, 144, 226, 0.12);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.2);
         }
 
         .card-option.selected {
-            background: rgba(34, 197, 94, 0.12);
-            transform: translateY(-2px);
-            box-shadow:
-                inset 0 0 0 1px rgba(34, 197, 94, 0.35),
-                0 14px 28px rgba(34, 197, 94, 0.2);
+            border-color: var(--success-color);
+            background: rgba(40, 167, 69, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
         }
 
         .card-option.disabled {
@@ -763,26 +584,6 @@
             cursor: not-allowed;
             transform: none;
             color: #6c757d;
-        }
-
-        .wallet-cancel-btn {
-            width: 100%;
-            padding: 1.1em;
-            font-size: 1em;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            background: rgba(255, 255, 255, 0.3);
-            color: var(--text-color);
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-        }
-
-        .wallet-cancel-btn:hover {
-            background: rgba(255, 255, 255, 0.45);
-            transform: translateY(-2px);
         }
 
         .customize-wallet-btn {
@@ -1075,9 +876,7 @@
             height: auto;
             display: block;
             border-radius: 15px;
-            filter: brightness(1.08) contrast(1.08) saturate(1.05);
         }
-
 
         .connector-text {
             text-align: center;
@@ -1138,7 +937,7 @@
             }
         }
 
-        .credit-cards-label {
+        .funding-cards-label {
             text-align: center;
             font-size: 0.95em;
             font-weight: 600;
@@ -1155,13 +954,11 @@
         }
 
         .simple-optimization-container {
-            background: rgba(255, 255, 255, 0.25);
-            border: none;
-            border-radius: 22px;
+            background: rgba(74, 144, 226, 0.05);
+            border: 2px solid rgba(74, 144, 226, 0.2);
+            border-radius: 20px;
             padding: 2em;
             text-align: center;
-            backdrop-filter: blur(16px) saturate(160%);
-            box-shadow: 0 10px 22px rgba(74, 144, 226, 0.06);
         }
 
         .simple-spinner {
@@ -1192,11 +989,10 @@
         .wallet-optimization-complete {
             margin-top: 1em;
             padding: 1em;
-            background: rgba(40, 167, 69, 0.12);
-            border: none;
-            border-radius: 16px;
+            background: rgba(40, 167, 69, 0.1);
+            border: 2px solid rgba(40, 167, 69, 0.3);
+            border-radius: 15px;
             text-align: center;
-            backdrop-filter: blur(10px) saturate(140%);
         }
 
         .optimization-success {
@@ -1312,14 +1108,12 @@
         .wallet-summary {
             margin-top: 1.5em;
             padding: 1.5em;
-            background: rgba(255, 255, 255, 0.22);
-            border-radius: 18px;
-            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            border: 2px solid rgba(74, 144, 226, 0.4);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(16px) saturate(160%);
-            box-shadow: 0 10px 22px rgba(74, 144, 226, 0.06);
         }
 
         .wallet-summary-item {
@@ -1353,61 +1147,25 @@
             .progress-stages { flex-wrap: wrap; gap: 1em; }
             .stage { min-width: 80px; }
             #log { height: 300px; flex: none; }
-            .wallet-stats-toggle { font-size: 0.9em; padding: 0.6em 1.1em; }
-            .wallet-stats-popover { left: 0; right: 0; width: auto; }
         }
     </style>
 </head>
 <body>
     <div class="animated-bg"></div>
-    <div class="circuit-bg" aria-hidden="true"></div>
     <div class="particles" id="particles"></div>
 
-    <main class="demo-container">
-        <div class="header-section">
-            <div class="logo-container">
-                <div class="logo-card">
-                    <img src="assets/logo_text.png?v=1" alt="One Card" class="logo-text">
-                </div>
-            </div>
+    <div class="header-section">
+        <div class="logo-container">
+            <img src="assets/logo.png?v=2" alt="One Card Logo" class="header-image">
         </div>
-        <div class="demo-shell">
+    </div>
+
+    <main class="demo-container">
         <div class="panel wallet-panel">
-            <div class="panel-header wallet-header">
-                <h2>Wallet Configuration</h2>
-                <div class="wallet-stats-menu">
-                    <button class="wallet-stats-toggle" id="walletStatsToggle" type="button" aria-expanded="false" aria-controls="walletStatsPopover">
-                        <span class="wallet-stats-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M4 18V11" />
-                                <path d="M10 18V6" />
-                                <path d="M16 18V13" />
-                                <path d="M22 18H2" />
-                            </svg>
-                        </span>
-                        Overview
-                    </button>
-                    <div class="wallet-stats-popover" id="walletStatsPopover" aria-hidden="true">
-                        <div class="wallet-summary" id="walletSummary">
-                            <div class="wallet-summary-item">
-                                <span class="wallet-summary-label">Total Cards</span>
-                                <span class="wallet-summary-value" id="totalCards">4</span>
-                            </div>
-                            <div class="wallet-summary-item">
-                                <span class="wallet-summary-label">Total Annual Fees</span>
-                                <span class="wallet-summary-value total-fees" id="totalFees">$0</span>
-                            </div>
-                            <div class="wallet-summary-item">
-                                <span class="wallet-summary-label">Average Fee</span>
-                                <span class="wallet-summary-value" id="averageFee">$0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2>Wallet Configuration</h2>
 
             <div class="wallet-setup-section" id="walletSetup">
-                <div class="section-title">Select 4 credit cards</div>
+                <div class="section-title">Select 4 funding cards</div>
                 <div class="card-selection-grid" id="cardSelectionGrid">
                     <!-- Cards will be loaded here -->
                 </div>
@@ -1440,9 +1198,6 @@
                 <button class="wallet-confirm-btn" id="walletConfirmBtn" disabled>
                     Select 4 Cards
                 </button>
-                <button class="wallet-cancel-btn" id="walletCancelBtn" type="button" style="display: none;">
-                    Cancel Changes
-                </button>
             </div>
 
             <div class="simple-optimization-section" id="simpleOptimization" style="display: none;">
@@ -1471,23 +1226,35 @@
                     </div>
                 </div>
 
-                <div class="credit-cards-label">credit Cards</div>
+                <div class="funding-cards-label">Funding Cards</div>
                 <div class="my-wallet-grid" id="myWalletGrid">
                     <!-- Selected cards will appear here -->
+                </div>
+                <div class="wallet-summary" id="walletSummary">
+                    <div class="wallet-summary-item">
+                        <span class="wallet-summary-label">Total Cards</span>
+                        <span class="wallet-summary-value" id="totalCards">4</span>
+                    </div>
+                    <div class="wallet-summary-item">
+                        <span class="wallet-summary-label">Total Annual Fees</span>
+                        <span class="wallet-summary-value total-fees" id="totalFees">$0</span>
+                    </div>
+                    <div class="wallet-summary-item">
+                        <span class="wallet-summary-label">Average Fee</span>
+                        <span class="wallet-summary-value" id="averageFee">$0</span>
+                    </div>
                 </div>
                 <div class="wallet-optimization-complete" id="walletOptimizationComplete" style="display: none;">
                     <div class="optimization-success">
                         <span class="success-icon"></span>
-                        <span class="success-text">Wallet Optimized! Ready for Smart Payments.</span>
+                        <span class="success-text">Cards Optimized! Ready for Smart Payments.</span>
                     </div>
                 </div>
                 <button class="customize-wallet-btn" id="customizeWalletBtn">
-                    Modify Wallet
+                    Change Cards
                 </button>
             </div>
         </div>
-
-        <div class="section-divider" aria-hidden="true"></div>
 
         <div class="panel transaction-panel" id="paymentSimulation" style="display: none;">
             <h2>Transaction Demo</h2>
@@ -1544,7 +1311,6 @@
                 <div id="log"><div class="log-entry info">System ready - Select a transaction type to begin...</div></div>
             </div>
         </div>
-        </div>
     </main>
 
     <script>
@@ -1571,12 +1337,9 @@
                 this.myWalletGrid = document.getElementById('myWalletGrid');
                 this.selectedCount = document.getElementById('selectedCount');
                 this.walletConfirmBtn = document.getElementById('walletConfirmBtn');
-                this.walletCancelBtn = document.getElementById('walletCancelBtn');
                 this.customizeWalletBtn = document.getElementById('customizeWalletBtn');
                 this.backupCardSection = document.getElementById('backupCardSection');
                 this.backupCardGrid = document.getElementById('backupCardGrid');
-                this.walletStatsToggle = document.getElementById('walletStatsToggle');
-                this.walletStatsPopover = document.getElementById('walletStatsPopover');
 
                 // Optimization Preference Elements
                 this.optimizationPreferenceSection = document.getElementById('optimizationPreferenceSection');
@@ -1609,7 +1372,6 @@
                 // Optimization State
                 this.optimizationPoller = null;
                 this.isOptimized = false;
-                this.walletEditSnapshot = null;
 
                 // For visual simulation timing
                 this.stages = [
@@ -1630,14 +1392,8 @@
                 this.payBtn.addEventListener('click', () => this.processPayment());
                 this.resetBtn.addEventListener('click', () => this.reset());
                 this.walletConfirmBtn.addEventListener('click', () => this.confirmWallet());
-                this.walletCancelBtn.addEventListener('click', () => this.cancelWalletEdit());
                 this.customizeWalletBtn.addEventListener('click', () => this.showCustomizeWallet());
                 this.optimizationToggle.addEventListener('change', (e) => this.updateOptimizationPreference(e));
-                this.walletStatsToggle.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    this.toggleWalletStats();
-                });
-                document.addEventListener('click', (event) => this.handleGlobalClick(event));
                 this.updateToggleLabels();
             }
 
@@ -1664,72 +1420,6 @@
                 }
             }
 
-            toggleWalletStats() {
-                const isOpen = this.walletStatsPopover.classList.contains('open');
-                this.setWalletStatsOpen(!isOpen);
-            }
-
-            setWalletStatsOpen(isOpen) {
-                this.walletStatsPopover.classList.toggle('open', isOpen);
-                this.walletStatsToggle.classList.toggle('active', isOpen);
-                this.walletStatsToggle.setAttribute('aria-expanded', String(isOpen));
-                this.walletStatsPopover.setAttribute('aria-hidden', String(!isOpen));
-            }
-
-            handleGlobalClick(event) {
-                if (!this.walletStatsPopover.classList.contains('open')) return;
-                if (this.walletStatsPopover.contains(event.target)) return;
-                if (this.walletStatsToggle.contains(event.target)) return;
-                this.setWalletStatsOpen(false);
-            }
-
-            startWalletEdit() {
-                if (this.walletEditSnapshot) return;
-                this.walletEditSnapshot = {
-                    selectedCardIds: this.selectedCards.map(card => card.id),
-                    backupCardId: this.backupCard ? this.backupCard.id : null,
-                    optimizationPreference: this.optimizationPreference,
-                    isOptimized: this.isOptimized,
-                    view: {
-                        walletSetup: this.walletSetup.style.display !== 'none',
-                        myWallet: this.myWalletSection.style.display !== 'none',
-                        paymentSimulation: this.paymentSimulation.style.display !== 'none',
-                        walletOptimizationComplete: this.walletOptimizationComplete.style.display !== 'none'
-                    }
-                };
-                this.walletCancelBtn.style.display = 'block';
-            }
-
-            cancelWalletEdit() {
-                if (!this.walletEditSnapshot) return;
-                const snapshot = this.walletEditSnapshot;
-                this.availableCards.forEach(card => {
-                    card.isSelected = snapshot.selectedCardIds.includes(card.id);
-                });
-                this.selectedCards = this.availableCards.filter(card => snapshot.selectedCardIds.includes(card.id));
-                this.backupCard = snapshot.backupCardId
-                    ? this.availableCards.find(card => card.id === snapshot.backupCardId)
-                    : null;
-                this.optimizationPreference = snapshot.optimizationPreference;
-                this.optimizationToggle.checked = this.optimizationPreference === 'rewards';
-                this.updateToggleLabels();
-                this.isOptimized = snapshot.isOptimized;
-
-                this.walletSetup.style.display = snapshot.view.walletSetup ? 'block' : 'none';
-                this.myWalletSection.style.display = snapshot.view.myWallet ? 'block' : 'none';
-                this.paymentSimulation.style.display = snapshot.view.paymentSimulation ? 'block' : 'none';
-                this.walletOptimizationComplete.style.display = snapshot.view.walletOptimizationComplete ? 'block' : 'none';
-                this.simpleOptimization.style.display = 'none';
-
-                this.updateCardSelection();
-                this.renderMyWallet();
-                this.updateWalletSummary();
-
-                this.walletEditSnapshot = null;
-                this.walletCancelBtn.style.display = 'none';
-                this.addLogEntry('Wallet changes canceled. Restored previous selection.', 'info', true);
-            }
-
             setupTransactionButtons() {
                 // Re-query transaction buttons to ensure we get them even if they're initially hidden
                 this.txButtons = document.querySelectorAll('.tx-button');
@@ -1745,9 +1435,6 @@
                     const particle = document.createElement('div');
                     particle.className = 'particle';
                     particle.style.left = Math.random() * 100 + '%';
-                    const size = Math.random() * 6 + 4;
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
                     particle.style.animationDelay = -(Math.random() * 35) + 's';
                     particle.style.animationDuration = (Math.random() * 20 + 30) + 's';
                     particlesContainer.appendChild(particle);
@@ -1807,8 +1494,8 @@
                     }
                 });
 
-                // Set Amex Platinum as default backup card
-                this.backupCard = this.selectedCards.find(c => c.cardKey === 'amex_platinum');
+                // Set Chase Sapphire Reserve as default backup card
+                this.backupCard = this.selectedCards.find(c => c.cardKey === 'chase_sapphire_reserve');
 
                 // Set default optimization preference
                 this.optimizationPreference = 'rewards';
@@ -1860,8 +1547,6 @@
             }
 
             showCustomizeWallet() {
-                this.setWalletStatsOpen(false);
-                this.startWalletEdit();
                 // Clear all current selections to start fresh
                 this.selectedCards.forEach(card => {
                     card.isSelected = false;
@@ -1869,7 +1554,6 @@
                 this.selectedCards = [];
                 this.backupCard = null;
                 this.isOptimized = false;
-                this.updateWalletSummary();
 
                 // Show the wallet setup section
                 this.walletSetup.style.display = 'block';
@@ -2066,8 +1750,6 @@
                 console.log('Backup card:', this.backupCard.cardName);
 
                 try {
-                    this.walletEditSnapshot = null;
-                    this.walletCancelBtn.style.display = 'none';
                     // Show simple optimization message
                     this.walletSetup.style.display = 'none';
                     this.simpleOptimization.style.display = 'block';
@@ -2284,7 +1966,6 @@
 
             removeFromWallet(cardId) {
                 console.log('removeFromWallet called for card:', cardId);
-                this.startWalletEdit();
 
                 // Remove from selected cards
                 this.selectedCards = this.selectedCards.filter(c => c.id !== cardId);

@@ -35,9 +35,9 @@ try {
     const rankingsPath = path.join(__dirname, '..', 'mcc_rankings.json');
     const rankingsData = fs.readFileSync(rankingsPath, 'utf8');
     mccRankings = JSON.parse(rankingsData);
-    console.log('✅ MCC rankings loaded successfully');
+    console.log('MCC rankings loaded successfully');
 } catch (error) {
-    console.error('❌ Failed to load MCC rankings:', error.message);
+    console.error('ERROR: Failed to load MCC rankings:', error.message);
 }
 
 // Card key to payment method ID mapping (verified via Stripe API)
@@ -63,8 +63,8 @@ app.use((req, res, next) => {
 app.post('/create-authorization', async (req, res) => {
     const { amount, descriptor, category } = req.body;
 
-    liveLog = ["🎴 Creating REAL authorization on card 0005..."];
-    console.log("🎴 Real authorization requested for:", descriptor);
+    liveLog = [" Creating REAL authorization on card 0005..."];
+    console.log(" Real authorization requested for:", descriptor);
 
     try {
         // Map descriptor to Stripe category name (for test API)
@@ -75,8 +75,8 @@ app.post('/create-authorization', async (req, res) => {
                             descriptor && descriptor.includes('Gas Station') ? 'service_stations' :
                             descriptor && descriptor.includes('Pharmacy') ? 'drug_stores_and_pharmacies' : 'eating_places_restaurants';
 
-        liveLog.push(`💳 Creating $${(amount / 100).toFixed(2)} authorization at '${descriptor}'...`);
-        liveLog.push(`📍 Category: ${categoryName}`);
+        liveLog.push(`Creating $${(amount / 100).toFixed(2)} authorization at '${descriptor}'...`);
+        liveLog.push(`Category: ${categoryName}`);
 
         // Create REAL Stripe Issuing authorization on card 0005
         // This will trigger the webhook at /stripe-webhook
@@ -89,9 +89,9 @@ app.post('/create-authorization', async (req, res) => {
             },
         });
 
-        liveLog.push(`✅ Authorization created: ${authorization.id}`);
-        liveLog.push(`⚡ Webhook will be triggered automatically...`);
-        liveLog.push(`🔗 View in Dashboard: https://dashboard.stripe.com/test/issuing/authorizations/${authorization.id}`);
+        liveLog.push(`Authorization created: ${authorization.id}`);
+        liveLog.push(`Webhook will be triggered automatically...`);
+        liveLog.push(`View in Dashboard: https://dashboard.stripe.com/test/issuing/authorizations/${authorization.id}`);
 
         res.json({
             message: "Authorization created on card 0005!",
@@ -101,7 +101,7 @@ app.post('/create-authorization', async (req, res) => {
         });
 
     } catch (error) {
-        liveLog.push(`❌ Failed to create authorization: ${error.message}`);
+        liveLog.push(`ERROR: Failed to create authorization: ${error.message}`);
         console.error('Authorization creation failed:', error);
         res.status(500).json({ error: error.message, log: liveLog });
     }
@@ -111,16 +111,16 @@ app.post('/create-authorization', async (req, res) => {
 app.post('/simulate-transaction', async (req, res) => {
     const { amount, descriptor, category } = req.body; // Read the details from the request
 
-    liveLog = ["🚀 Simulation requested from the frontend."];
-    console.log("🚀 Simulation requested for:", descriptor);
+    liveLog = ["Simulation requested from the frontend."];
+    console.log("Simulation requested for:", descriptor);
 
     try {
-        liveLog.push(`💳 Simulating a $${(amount / 100).toFixed(2)} transaction at '${descriptor}'...`);
+        liveLog.push(`Simulating a $${(amount / 100).toFixed(2)} transaction at '${descriptor}'...`);
 
         // Skip the actual Stripe API call for demo purposes to avoid category validation issues
         // In a real implementation, you would call Stripe with proper category codes
-        liveLog.push("✅ Simulating transaction locally (Stripe API call skipped for demo).");
-        liveLog.push("⚡ Processing transaction through demo payment flow...");
+        liveLog.push("Simulating transaction locally (Stripe API call skipped for demo).");
+        liveLog.push("Processing transaction through demo payment flow...");
 
         // LOCAL TESTING: Simulate webhook response after delay
         setTimeout(async () => {
@@ -132,15 +132,15 @@ app.post('/simulate-transaction', async (req, res) => {
                           descriptor && descriptor.includes('Gas Station') ? '5541' :
                           descriptor && descriptor.includes('Pharmacy') ? '5912' : '4121';
 
-            liveLog.push(`🧠 Analyzing transaction... MCC is ${mockMCC}.`);
+            liveLog.push(`Analyzing transaction... MCC is ${mockMCC}.`);
             if (customRankingsFile) {
-                liveLog.push(`🎯 Using your custom optimized rankings for best rewards!`);
+                liveLog.push(`Using your custom optimized rankings for best rewards!`);
             }
             const optimalCard = selectOptimalCard(mockMCC);
 
             if (optimalCard) {
-                liveLog.push(`🏆 Optimal card selected: ${optimalCard.name}`);
-                liveLog.push(`💸 Attempting to charge the optimal card (Amount: ${amount} cents)...`);
+                liveLog.push(`Optimal card selected: ${optimalCard.name}`);
+                liveLog.push(`Attempting to charge the optimal card (Amount: ${amount} cents)...`);
 
                 try {
                     await stripe.paymentIntents.create({
@@ -152,19 +152,19 @@ app.post('/simulate-transaction', async (req, res) => {
                         off_session: true,
                     });
 
-                    liveLog.push("✅ Stripe charge successful.");
-                    liveLog.push("👍 Transaction completed successfully.");
+                    liveLog.push("SUCCESS: Stripe charge successful.");
+                    liveLog.push("Transaction completed successfully.");
                 } catch (error) {
-                    liveLog.push(`❌ Stripe charge failed: ${error.message}`);
-                    liveLog.push("👎 Transaction declined.");
+                    liveLog.push(`ERROR: Stripe charge failed: ${error.message}`);
+                    liveLog.push("Transaction declined.");
                 }
             } else {
-                liveLog.push("🤷 No optimal card found. Declining transaction.");
+                liveLog.push("No optimal card found. Declining transaction.");
             }
         }, 2000);
 
     } catch (error) {
-        liveLog.push(`❌ Stripe simulation failed: ${error.message}`);
+        liveLog.push(`ERROR: Stripe simulation failed: ${error.message}`);
     }
 
     res.json({ message: "Simulation started!", log: liveLog });
@@ -172,7 +172,7 @@ app.post('/simulate-transaction', async (req, res) => {
 
 app.post('/stripe-webhook', bodyParser.raw({type: 'application/json'}), async (req, res) => {
     const webhookStartTime = Date.now();
-    liveLog.push("⚡️ INCOMING TRANSACTION from Stripe...");
+    liveLog.push("INCOMING TRANSACTION from Stripe...");
     console.log(`[Webhook] Received event at ${new Date().toISOString()}`);
 
     let event;
@@ -181,7 +181,7 @@ app.post('/stripe-webhook', bodyParser.raw({type: 'application/json'}), async (r
         event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
         console.log(`[Webhook] Event type: ${event.type}, ID: ${event.id}`);
     } catch (err) {
-        liveLog.push(`❌ Webhook signature verification failed: ${err.message}`);
+        liveLog.push(`ERROR: Webhook signature verification failed: ${err.message}`);
         console.error('[Webhook] Signature verification failed:', err.message);
         return res.status(400).send(`Webhook Error: ${err.message}`);
     }
@@ -191,18 +191,18 @@ app.post('/stripe-webhook', bodyParser.raw({type: 'application/json'}), async (r
         const incomingMCC = authorization.merchant_data.category_code;
         const amountToCharge = authorization.pending_request.amount;
 
-        liveLog.push(`🧠 Analyzing transaction... MCC is ${incomingMCC}.`);
+        liveLog.push(`Analyzing transaction... MCC is ${incomingMCC}.`);
         console.log(`[Webhook] Authorization ${authorization.id}: $${amountToCharge/100} at MCC ${incomingMCC}`);
 
         if (customRankingsFile) {
-            liveLog.push(`🎯 Using your custom optimized rankings for best rewards!`);
+            liveLog.push(`Using your custom optimized rankings for best rewards!`);
         }
 
         const optimalCard = selectOptimalCard(incomingMCC);
 
         if (optimalCard) {
-            liveLog.push(`🏆 Optimal card selected: ${optimalCard.name}`);
-            liveLog.push(`💸 Attempting to charge the optimal card (Amount: ${amountToCharge} cents)...`);
+            liveLog.push(`Optimal card selected: ${optimalCard.name}`);
+            liveLog.push(`Attempting to charge the optimal card (Amount: ${amountToCharge} cents)...`);
 
             const responseTime = Date.now() - webhookStartTime;
             console.log(`[Webhook] Responding with APPROVED after ${responseTime}ms`);
@@ -212,7 +212,7 @@ app.post('/stripe-webhook', bodyParser.raw({type: 'application/json'}), async (r
             // Then charge the funding card asynchronously in the background
             res.setHeader('Stripe-Version', '2024-06-20');
             res.status(200).json({ approved: true });
-            liveLog.push(`👍 Sent 'APPROVED' response back to Stripe Issuing (${responseTime}ms).`);
+            liveLog.push(`Sent 'APPROVED' response back to Stripe Issuing (${responseTime}ms).`);
 
             // Charge the funding card asynchronously (doesn't block the webhook response)
             stripe.paymentIntents.create({
@@ -223,17 +223,17 @@ app.post('/stripe-webhook', bodyParser.raw({type: 'application/json'}), async (r
                 confirm: true,
                 off_session: true,
             }).then((paymentIntent) => {
-                liveLog.push(`✅ Stripe charge successful: ${paymentIntent.id}`);
+                liveLog.push(`SUCCESS: Stripe charge successful: ${paymentIntent.id}`);
                 console.log(`[Webhook] Funding card charged: ${paymentIntent.id}, status: ${paymentIntent.status}`);
             }).catch(error => {
-                liveLog.push(`❌ Stripe charge failed: ${error.message}`);
+                liveLog.push(`ERROR: Stripe charge failed: ${error.message}`);
                 console.error('[Webhook] CRITICAL: Authorization approved but funding charge failed:', error.message);
             });
 
             return; // Exit after sending response
 
         } else {
-            liveLog.push("🤷 No optimal card found. Declining transaction.");
+            liveLog.push("No optimal card found. Declining transaction.");
             console.log('[Webhook] Responding with DECLINED - no optimal card found');
             res.setHeader('Stripe-Version', '2024-06-20');
             return res.status(200).json({ approved: false });
@@ -276,11 +276,11 @@ function calculateEffectiveReward(rewardAmount, rewardType, preference) {
 function selectOptimalCard(mcc) {
     const rankingType = customRankingsFile ? "custom" : "default";
     console.log(`🔍 Looking for optimal card for MCC: ${mcc} (using ${rankingType} rankings)`);
-    console.log(`${optimizationPreference === 'cash' ? '💵' : '🎁'} Optimization strategy: ${optimizationPreference}`);
+    console.log(`${optimizationPreference === 'cash' ? '' : ''} Optimization strategy: ${optimizationPreference}`);
 
     // Check if we have rankings for this MCC
     if (!mccRankings[mcc] || !Array.isArray(mccRankings[mcc]) || mccRankings[mcc].length === 0) {
-        console.log(`❌ No rankings found for MCC: ${mcc}`);
+        console.log(` No rankings found for MCC: ${mcc}`);
         return null;
     }
 
@@ -307,7 +307,7 @@ function selectOptimalCard(mcc) {
     console.log(`🔍 Available cards for MCC ${mcc}: [${availableCards.map(c => `${c.cardName} (${c.cardKey || c.cardType})`).join(', ')}]`);
 
     if (availableCards.length === 0) {
-        console.log(`❌ No wallet card types found in rankings for MCC: ${mcc}`);
+        console.log(` No wallet card types found in rankings for MCC: ${mcc}`);
         return null;
     }
 
@@ -338,7 +338,7 @@ function selectOptimalCard(mcc) {
             // CASE 1: Cash cards exist - pick the best one
             // (Already sorted by effective reward, so best cash card or points card 2x better is already first)
             topCard = availableCards[0];
-            console.log(`💵 Cash preference: Selected ${topCard.cardName} (${topCard.rewardAmount}x ${topCard.rewardType}, ${topCard.effectiveReward.toFixed(2)} effective)`);
+            console.log(` Cash preference: Selected ${topCard.cardName} (${topCard.rewardAmount}x ${topCard.rewardType}, ${topCard.effectiveReward.toFixed(2)} effective)`);
         } else {
             // CASE 3: No cash back cards in wallet - use backup card as fallback
             if (backupCard) {
@@ -350,12 +350,12 @@ function selectOptimalCard(mcc) {
 
                 if (backupCardInList) {
                     topCard = backupCardInList;
-                    console.log(`🛡️ Cash preference but no cash cards available - using backup card: ${topCard.cardName}`);
+                    console.log(` Cash preference but no cash cards available - using backup card: ${topCard.cardName}`);
                 } else {
-                    console.log(`💵 Cash preference but no cash cards available - using best points card: ${topCard.cardName}`);
+                    console.log(`Cash preference but no cash cards available - using best points card: ${topCard.cardName}`);
                 }
             } else {
-                console.log(`💵 Cash preference but no cash cards available - using best points card: ${topCard.cardName}`);
+                console.log(`Cash preference but no cash cards available - using best points card: ${topCard.cardName}`);
             }
         }
     } else {
@@ -376,14 +376,14 @@ function selectOptimalCard(mcc) {
 
             if (backupCardInList) {
                 topCard = backupCardInList;
-                console.log(`🛡️ Maximize rewards tie (${tiedCards.length} cards at ${topEffectiveReward.toFixed(2)}) - using backup card: ${topCard.cardName}`);
+                console.log(`Maximize rewards tie (${tiedCards.length} cards at ${topEffectiveReward.toFixed(2)}) - using backup card: ${topCard.cardName}`);
             } else {
                 topCard = availableCards[0];
-                console.log(`🎁 Maximize rewards: ${topCard.cardName} (${topCard.rewardAmount}x ${topCard.rewardType}, ${topCard.effectiveReward.toFixed(2)} effective)`);
+                console.log(`Maximize rewards: ${topCard.cardName} (${topCard.rewardAmount}x ${topCard.rewardType}, ${topCard.effectiveReward.toFixed(2)} effective)`);
             }
         } else {
             topCard = availableCards[0];
-            console.log(`🎁 Maximize rewards: ${topCard.cardName} (${topCard.rewardAmount}x ${topCard.rewardType}, ${topCard.effectiveReward.toFixed(2)} effective)`);
+            console.log(`Maximize rewards: ${topCard.cardName} (${topCard.rewardAmount}x ${topCard.rewardType}, ${topCard.effectiveReward.toFixed(2)} effective)`);
         }
     }
 
@@ -391,13 +391,13 @@ function selectOptimalCard(mcc) {
     let cardTypeKey;
     if (topCard.cardKey && cardMapping[topCard.cardKey]) {
         cardTypeKey = topCard.cardKey;
-        console.log(`💳 Using cardKey: ${cardTypeKey}`);
+        console.log(` Using cardKey: ${cardTypeKey}`);
     } else if (topCard.cardType) {
         const cardType = topCard.cardType;
         cardTypeKey = cardType === "American Express" ? "amex" : cardType.toLowerCase();
-        console.log(`💳 Using cardType: ${cardType} → ${cardTypeKey}`);
+        console.log(` Using cardType: ${cardType} → ${cardTypeKey}`);
     } else {
-        console.log(`❌ No cardKey or cardType found for top card`);
+        console.log(` No cardKey or cardType found for top card`);
         return null;
     }
 
@@ -405,7 +405,7 @@ function selectOptimalCard(mcc) {
     console.log(`💳 Payment method ID: ${paymentMethodId}`);
 
     if (!paymentMethodId) {
-        console.log(`❌ No payment method ID found for card type: ${cardTypeKey}`);
+        console.log(` No payment method ID found for card type: ${cardTypeKey}`);
         return null;
     }
 
@@ -424,7 +424,7 @@ function selectOptimalCard(mcc) {
         mcc: mcc
     };
 
-    console.log(`✅ Selected card:`, selectedCard);
+    console.log(`Selected card:`, selectedCard);
 
     // Store for frontend display
     lastSelectedCard = selectedCard;
@@ -479,9 +479,9 @@ app.post('/optimize-cards', (req, res) => {
         return res.status(400).json({ error: 'Invalid selectedCards data' });
     }
 
-    console.log('🎯 Starting card optimization for:', selectedCards.map(card => card.cardName));
-    console.log('🛡️ Backup card:', userBackupCard ? userBackupCard.cardName : 'None');
-    console.log(`${userOptimizationPreference === 'cash' ? '💵' : '🎁'} Optimization preference:`, userOptimizationPreference || 'rewards (default)');
+    console.log(' Starting card optimization for:', selectedCards.map(card => card.cardName));
+    console.log(' Backup card:', userBackupCard ? userBackupCard.cardName : 'None');
+    console.log(`${userOptimizationPreference === 'cash' ? '' : ''} Optimization preference:`, userOptimizationPreference || 'rewards (default)');
 
     // Store the current wallet cards, backup card, and optimization preference globally
     currentWalletCards = selectedCards;
@@ -495,7 +495,7 @@ app.post('/optimize-cards', (req, res) => {
 
     // Check if we have cached results for this card combination
     if (fs.existsSync(cacheFile)) {
-        console.log('📦 Using cached optimization results for card combination:', cacheKey);
+        console.log(' Using cached optimization results for card combination:', cacheKey);
 
         // Load cached rankings immediately
         try {
@@ -503,7 +503,7 @@ app.post('/optimize-cards', (req, res) => {
             mccRankings = JSON.parse(cachedData);
             customRankingsFile = `cached_rankings_${cacheKey}.json`;
 
-            console.log('✅ Cached rankings loaded successfully');
+            console.log('Cached rankings loaded successfully');
 
             // Simulate quick processing for demo
             optimizationInProgress = true;
@@ -518,7 +518,7 @@ app.post('/optimize-cards', (req, res) => {
 
             return res.json({ message: 'Optimization started (using cache)', status: 'cached' });
         } catch (error) {
-            console.error('❌ Failed to load cached rankings:', error.message);
+            console.error(' Failed to load cached rankings:', error.message);
             // Fall through to normal optimization
         }
     }
@@ -530,7 +530,7 @@ app.post('/optimize-cards', (req, res) => {
     customRankingsFile = null;
 
     // For demo purposes, use default rankings without expensive API calls
-    console.log('🔄 Using default rankings for demo (skipping expensive API calls)');
+    console.log(' Using default rankings for demo (skipping expensive API calls)');
 
     // Simulate processing and use the default rankings file
     setTimeout(() => {
@@ -545,14 +545,14 @@ app.post('/optimize-cards', (req, res) => {
                 fs.writeFileSync(cacheFile, defaultData);
                 customRankingsFile = `cached_rankings_${cacheKey}.json`;
 
-                console.log('✅ Default rankings applied and cached');
+                console.log('Default rankings applied and cached');
             }
 
             optimizationInProgress = false;
             optimizationProgress = 100;
             optimizationStatus = "Optimization complete (default)!";
         } catch (error) {
-            console.error('❌ Failed to apply default rankings:', error.message);
+            console.error(' Failed to apply default rankings:', error.message);
             optimizationInProgress = false;
             optimizationStatus = "Optimization failed";
         }
@@ -653,10 +653,10 @@ function startOptimizationProcess(selectedCards) {
         if (code === 0) {
             optimizationProgress = 100;
             optimizationStatus = "Optimization complete!";
-            console.log('✅ Optimization completed successfully');
+            console.log(' Optimization completed successfully');
         } else {
             optimizationStatus = "Optimization failed";
-            console.error('❌ Optimization failed with code:', code);
+            console.error(' Optimization failed with code:', code);
         }
 
         // Clean up temp file
@@ -685,9 +685,9 @@ function loadCustomRankings(filename) {
         }
 
         mccRankings = JSON.parse(rankingsData);
-        console.log('✅ Custom rankings loaded successfully from', rankingsPath);
+        console.log(' Custom rankings loaded successfully from', rankingsPath);
     } catch (error) {
-        console.error('❌ Failed to load custom rankings:', error.message);
+        console.error(' Failed to load custom rankings:', error.message);
         console.log('Searched paths:',
             path.join(__dirname, '..', filename),
             path.join(__dirname, filename)
