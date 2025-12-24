@@ -1,0 +1,67 @@
+requests==2.32.5
+
+
+⏺ Perfect! I found the issue - "Permission denied". Nginx can't read the files in /home/ubuntu/Frontend/ because of file permissions.
+
+  Let's fix this:
+
+  ssh -i ~/aws-keys/onecard-demo-key.pem ubuntu@54.196.250.76 << 'EOF'
+  # Fix permissions on Frontend directory
+  chmod -R 755 ~/Frontend
+  chmod 755 ~
+
+  # Restart Nginx
+  sudo systemctl restart nginx
+  EOF
+
+  After running this, try visiting http://54.196.250.76 again - it should work now! 🎉
+
+  The issue was that Nginx (running as user www-data) couldn't access the files in the ubuntu user's home directory. This command makes the files readable by Nginx.
+
+> rutva@Rutvas-MacBook-Pro-10 Onedemo-Stripeenv % ssh -i ~/aws-keys/onecard-demo-key.pem ubuntu@54.196.250.76 << 'EOF'
+heredoc>  chmod -R 755 ~/Frontend
+  chmod 755 ~
+heredoc> 
+
+⏺ You need to add the closing EOF and the restart command. Run this complete command:
+
+  ssh -i ~/aws-keys/onecard-demo-key.pem ubuntu@54.196.250.76 << 'EOF'
+  chmod -R 755 ~/Frontend
+  chmod 755 ~
+  sudo systemctl restart nginx
+  EOF
+
+  Or run them as separate commands:
+
+  ssh -i ~/aws-keys/onecard-demo-key.pem ubuntu@54.196.250.76 'chmod -R 755 ~/Frontend && chmod 755 ~ && sudo systemctl restart nginx'
+
+  Then try visiting http://54.196.250.76 in your browser!
+
+> it now runs, but when i start it the hover dots in the background are bad and cluttered at the top 
+
+⏺ Good catch! Let's fix those particle dots. The issue is probably too many particles or they're spawning incorrectly. Let me update the frontend:
+
+⏺ Read(~/Downloads/One/Onedemo-Stripeenv/Frontend/index.html)
+  ⎿  Read 15 lines
+
+⏺ I see the issue - there are 60 particles all spawning with random delays. Let's reduce the number and spread them out better:
+
+⏺ Update(~/Downloads/One/Onedemo-Stripeenv/Frontend/index.html)
+  ⎿  Updated ../Frontend/index.html with 3 additions and 3 removals                                  
+       950                createParticles() {
+       951                    const particlesContainer = document.getElementById('particles');
+       952                    if(!particlesContainer) return;
+       953 -                  for (let i = 0; i < 60; i++) {
+       953 +                  for (let i = 0; i < 25; i++) {
+       954                        const particle = document.createElement('div');
+       955                        particle.className = 'particle';
+       956                        particle.style.left = Math.random() * 100 + '%';
+       957 -                      particle.style.animationDelay = (Math.random() * 33 + 2) + 's';
+       958 -                      particle.style.animationDuration = (Math.random() * 15 + 25) + 's';
+       957 +                      particle.style.animationDelay = -(Math.random() * 35) + 's';
+       958 +                      particle.style.animationDuration = (Math.random() * 20 + 30) + 's';
+       959                        particlesContainer.appendChild(particle);
+       960                    }
+       961                }
+  ⎿  Session limit reached ∙ resets 1am
+     /upgrade to increase your usage limit.

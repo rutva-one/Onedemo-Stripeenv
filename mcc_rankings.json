@@ -1,0 +1,366 @@
+{
+    "5812": [
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 4.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 3.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "5814": [
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 4.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 3.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 3.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "5411": [
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 5.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 4.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "4511": [
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "7011": [
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "7512": [
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "5541": [
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Points"
+        }
+    ],
+    "4121": [
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "4111": [
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Points"
+        }
+    ],
+    "5815": [
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 3.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "5912": [
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "7997": [
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "5399": [
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 5.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ],
+    "4722": [
+        {
+            "cardName": "The New Chase Sapphire Reserve\u00ae Credit Card",
+            "cardKey": "visa",
+            "rewardAmount": 3.0,
+            "rewardType": "Points"
+        },
+        {
+            "cardName": "Capital One SavorOne Cash Rewards Credit Card",
+            "cardKey": "mastercard",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "American Express\u00ae Gold Card",
+            "cardKey": "amex",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        },
+        {
+            "cardName": "Discover it\u00ae Cash Back",
+            "cardKey": "discover",
+            "rewardAmount": 1.0,
+            "rewardType": "Default"
+        }
+    ]
+}

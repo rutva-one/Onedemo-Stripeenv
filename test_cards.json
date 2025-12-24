@@ -1,0 +1,22 @@
+[
+    {
+        "cardName": "Chase Sapphire Reserve®",
+        "cardKey": "chase_sapphire_reserve",
+        "id": 2
+    },
+    {
+        "cardName": "The Platinum Card® from American Express",
+        "cardKey": "amex_platinum",
+        "id": 1
+    },
+    {
+        "cardName": "Citi Premier® Card",
+        "cardKey": "citi_premier",
+        "id": 7
+    },
+    {
+        "cardName": "Discover it® Cash Back",
+        "cardKey": "discover_it_cash_back",
+        "id": 16
+    }
+]

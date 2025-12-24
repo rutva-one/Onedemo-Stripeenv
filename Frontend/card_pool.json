@@ -1,0 +1,282 @@
+[
+    {
+        "id": 1,
+        "cardName": "The Platinum Card from American Express",
+        "cardKey": "amex_platinum",
+        "cardType": "American Express",
+        "benefits": [
+            "5x points on flights booked directly with airlines",
+            "5x points on hotels booked through Amex Travel",
+            "Annual $200 airline fee credit",
+            "Access to 1,400+ airport lounges worldwide"
+        ],
+        "annualFee": 695,
+        "isSelected": false
+    },
+    {
+        "id": 2,
+        "cardName": "Chase Sapphire Reserve",
+        "cardKey": "chase_sapphire_reserve",
+        "cardType": "Visa",
+        "benefits": [
+            "3x points on travel and dining",
+            "1.5x value when redeemed through Ultimate Rewards",
+            "Annual $300 travel credit",
+            "Priority Pass lounge access"
+        ],
+        "annualFee": 550,
+        "isSelected": false
+    },
+    {
+        "id": 3,
+        "cardName": "Citi Premier Card",
+        "cardKey": "citi_premier",
+        "cardType": "Mastercard",
+        "benefits": [
+            "3x points on travel, gas stations, and supermarkets",
+            "2x points on dining and entertainment",
+            "1x points on all other purchases",
+            "25% more value when booking travel through ThankYou"
+        ],
+        "annualFee": 95,
+        "isSelected": false
+    },
+    {
+        "id": 4,
+        "cardName": "Discover it Cash Back",
+        "cardKey": "discover_it_cash_back",
+        "cardType": "Discover",
+        "benefits": [
+            "5% cash back on rotating quarterly categories",
+            "1% cash back on all other purchases",
+            "Cashback Match for first year",
+            "No annual fee"
+        ],
+        "annualFee": 0,
+        "isSelected": false
+    },
+    {
+        "id": 5,
+        "cardName": "Ink Business Preferred Credit Card",
+        "cardKey": "ink_business_preferred",
+        "cardType": "Visa",
+        "benefits": [
+            "3x points on travel, shipping, internet, cable, phone",
+            "3x points on advertising purchases with social media",
+            "1x points on all other purchases",
+            "25% more value when redeemed through Ultimate Rewards"
+        ],
+        "annualFee": 95,
+        "isSelected": false
+    },
+    {
+        "id": 6,
+        "cardName": "American Express Gold Card",
+        "cardKey": "amex_gold",
+        "cardType": "American Express",
+        "benefits": [
+            "4x points on dining and U.S. supermarkets",
+            "3x points on flights",
+            "Annual $120 dining credit",
+            "Annual $120 Uber Cash"
+        ],
+        "annualFee": 250,
+        "isSelected": false
+    },
+    {
+        "id": 7,
+        "cardName": "Capital One Venture X Rewards Credit Card",
+        "cardKey": "venture_x",
+        "cardType": "Visa",
+        "benefits": [
+            "2x miles on all purchases",
+            "5x miles on hotels and rental cars",
+            "Annual $300 travel credit",
+            "10,000 anniversary bonus miles"
+        ],
+        "annualFee": 395,
+        "isSelected": false
+    },
+    {
+        "id": 8,
+        "cardName": "The Business Platinum Card from American Express",
+        "cardKey": "amex_business_platinum",
+        "cardType": "American Express",
+        "benefits": [
+            "5x points on flights and hotels",
+            "1.5x points on purchases of $5,000 or more",
+            "Annual $200 airline fee credit",
+            "Access to Centurion Lounges"
+        ],
+        "annualFee": 695,
+        "isSelected": false
+    },
+    {
+        "id": 9,
+        "cardName": "Bank of America Premium Rewards credit card",
+        "cardKey": "boa_premium_rewards",
+        "cardType": "Visa",
+        "benefits": [
+            "2x points on travel and dining",
+            "1.5x points on all other purchases",
+            "Annual $100 airline incidental credit",
+            "25% points bonus with Preferred Rewards"
+        ],
+        "annualFee": 95,
+        "isSelected": false
+    },
+    {
+        "id": 10,
+        "cardName": "Delta SkyMiles Reserve American Express Card",
+        "cardKey": "delta_reserve",
+        "cardType": "American Express",
+        "benefits": [
+            "3x miles on Delta purchases",
+            "1x mile on all other purchases",
+            "Annual companion certificate",
+            "Delta Sky Club access"
+        ],
+        "annualFee": 650,
+        "isSelected": false
+    },
+    {
+        "id": 11,
+        "cardName": "Hilton Honors American Express Aspire Card",
+        "cardKey": "hilton_aspire",
+        "cardType": "American Express",
+        "benefits": [
+            "14x points at Hilton properties",
+            "7x points on flights, car rentals, restaurants",
+            "Annual free weekend night award",
+            "Hilton Honors Diamond status"
+        ],
+        "annualFee": 450,
+        "isSelected": false
+    },
+    {
+        "id": 12,
+        "cardName": "Marriott Bonvoy Brilliant American Express Card",
+        "cardKey": "marriott_brilliant",
+        "cardType": "American Express",
+        "benefits": [
+            "6x points at Marriott Bonvoy properties",
+            "3x points on dining and flights",
+            "Annual free night award",
+            "Marriott Bonvoy Gold Elite status"
+        ],
+        "annualFee": 650,
+        "isSelected": false
+    },
+    {
+        "id": 13,
+        "cardName": "Chase Freedom Unlimited",
+        "cardKey": "chase_freedom_unlimited",
+        "cardType": "Visa",
+        "benefits": [
+            "1.5% cash back on all purchases",
+            "5% cash back on travel through Ultimate Rewards",
+            "3% cash back on dining and drugstores",
+            "No annual fee"
+        ],
+        "annualFee": 0,
+        "isSelected": false
+    },
+    {
+        "id": 14,
+        "cardName": "Chase Freedom Flex",
+        "cardKey": "chase_freedom_flex",
+        "cardType": "Mastercard",
+        "benefits": [
+            "5% cash back on rotating quarterly categories",
+            "5% cash back on travel through Ultimate Rewards",
+            "3% cash back on dining and drugstores",
+            "No annual fee"
+        ],
+        "annualFee": 0,
+        "isSelected": false
+    },
+    {
+        "id": 15,
+        "cardName": "Citi Double Cash Card",
+        "cardKey": "citi_double_cash",
+        "cardType": "Mastercard",
+        "benefits": [
+            "2% cash back on all purchases (1% when you buy, 1% when you pay)",
+            "No annual fee",
+            "No foreign transaction fees",
+            "Balance transfer offers available"
+        ],
+        "annualFee": 0,
+        "isSelected": false
+    },
+    {
+        "id": 16,
+        "cardName": "Capital One Quicksilver Cash Rewards Credit Card",
+        "cardKey": "quicksilver",
+        "cardType": "Mastercard",
+        "benefits": [
+            "1.5% cash back on all purchases",
+            "No annual fee",
+            "No foreign transaction fees",
+            "$200 cash bonus after spending $500"
+        ],
+        "annualFee": 0,
+        "isSelected": false
+    },
+    {
+        "id": 17,
+        "cardName": "Amazon Prime Rewards Visa Signature Card",
+        "cardKey": "amazon_prime",
+        "cardType": "Visa",
+        "benefits": [
+            "5% back on Amazon and Whole Foods purchases",
+            "2% back on restaurants, gas stations, and drugstores",
+            "1% back on all other purchases",
+            "No annual fee (with Prime membership)"
+        ],
+        "annualFee": 0,
+        "isSelected": false
+    },
+    {
+        "id": 18,
+        "cardName": "Blue Cash Preferred Card from American Express",
+        "cardKey": "blue_cash_preferred",
+        "cardType": "American Express",
+        "benefits": [
+            "6% cash back on U.S. supermarkets (up to $6,000/year)",
+            "6% cash back on select U.S. streaming services",
+            "3% cash back on transit and gas stations",
+            "1% cash back on other purchases"
+        ],
+        "annualFee": 95,
+        "isSelected": false
+    },
+    {
+        "id": 19,
+        "cardName": "American Express Business Cash Card",
+        "cardKey": "amex_business_cash",
+        "cardType": "American Express",
+        "benefits": [
+            "2% cash back on purchases (up to $50,000/year)",
+            "1% cash back thereafter",
+            "No annual fee",
+            "Employee cards at no additional cost"
+        ],
+        "annualFee": 0,
+        "isSelected": false
+    },
+    {
+        "id": 20,
+        "cardName": "Wells Fargo Autograph Card",
+        "cardKey": "wells_fargo_autograph",
+        "cardType": "Visa",
+        "benefits": [
+            "3x points on restaurants, travel, gas, transit, streaming",
+            "1x points on all other purchases",
+            "No annual fee",
+            "Cell phone protection"
+        ],
+        "annualFee": 0,
+        "isSelected": false
+    }
+]
